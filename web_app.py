@@ -331,11 +331,17 @@ def build_app():
 
 
 def main():
+
     parser = argparse.ArgumentParser(description="Seed Sensei Web Product Application")
+
     parser.add_argument(
+
         "--port",
+
         type=int,
-        default=7860,
+
+        default=int(os.environ.get("PORT", 7860)),
+
         help="Port to run web app (default: 7860)"
     )
     parser.add_argument(
