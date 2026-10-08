@@ -64,7 +64,7 @@ def get_current_ui_components(selected_zone: int = 1):
 def reset_to_normal(selected_zone: int = 1):
     """Reset farm state to optimal conditions and refresh UI."""
     sim.set_balanced_normal()
-    status_msg = "✅ Field restored to optimal healthy conditions across all 6 zones."
+    status_msg = "Field restored to optimal healthy conditions across all 6 zones."
     ov, grid, drawer, ins, rec, alt = get_current_ui_components(selected_zone)
     return ov, grid, drawer, ins, rec, alt, status_msg
 
@@ -90,7 +90,7 @@ def apply_step(step_idx: int):
         humidity=step_info["humidity"],
         soil_temp=step_info["soil_temp"],
     )
-    status_msg = f"📍 Simulation: Step {step_idx+1}/4 applied — {step_info['description']}"
+    status_msg = f"Simulation: Step {step_idx+1}/4 applied — {step_info['description']}"
     ov, grid, drawer, ins, rec, alt = get_current_ui_components(selected_zone=2)
     return ov, grid, drawer, ins, rec, alt, status_msg
 
@@ -110,13 +110,13 @@ def run_animated_stress_scenario():
             humidity=s["humidity"],
             soil_temp=s["soil_temp"],
         )
-        status_msg = f"⏳ Running Stress Scenario: Step {idx+1} of 4 — {s['description']}"
+        status_msg = f"Running Stress Scenario: Step {idx+1} of 4 — {s['description']}"
         ov, grid, drawer, ins, rec, alt = get_current_ui_components(selected_zone=2)
         yield ov, grid, drawer, ins, rec, alt, status_msg
         if idx < len(steps) - 1:
             time.sleep(1.8)
 
-    final_msg = "🚨 Stress Scenario Complete: Zone 2 moisture critical (18%). Immediate irrigation recommended."
+    final_msg = "Stress Scenario Complete: Zone 2 moisture critical (18%). Immediate irrigation recommended."
     yield ov, grid, drawer, ins, rec, alt, final_msg
 
 
@@ -139,13 +139,13 @@ def run_animated_heat_scenario():
             soil_temp=s["soil_temp"],
             humidity=s["hum"],
         )
-        status_msg = f"⏳ Running Heat Scenario: Step {idx+1} of 4 — {s['desc']}"
+        status_msg = f"Running Heat Scenario: Step {idx+1} of 4 — {s['desc']}"
         ov, grid, drawer, ins, rec, alt = get_current_ui_components(selected_zone=6)
         yield ov, grid, drawer, ins, rec, alt, status_msg
         if idx < len(heat_steps) - 1:
             time.sleep(1.8)
 
-    final_msg = "☀️ Heat Scenario Complete: Zone 6 temperature severe (40.5°C). Canopy cooling recommended."
+    final_msg = "Heat Scenario Complete: Zone 6 temperature severe (40.5°C). Canopy cooling recommended."
     yield ov, grid, drawer, ins, rec, alt, final_msg
 
 
@@ -158,9 +158,9 @@ def build_app():
         # Live Demo Control Bar
         with gr.Group():
             with gr.Row():
-                btn_stress = gr.Button("💧 Run Stress Scenario (Zone 2 Drying)", variant="primary", scale=2)
-                btn_heat = gr.Button("☀️ Run Heat Scenario (Zone 6 Heat)", variant="secondary", scale=2)
-                btn_reset = gr.Button("🔄 Reset to Healthy", variant="secondary", scale=1)
+                btn_stress = gr.Button("Run Stress Scenario (Zone 2 Drying)", variant="primary", scale=2)
+                btn_heat = gr.Button("Run Heat Scenario (Zone 6 Heat)", variant="secondary", scale=2)
+                btn_reset = gr.Button("Reset to Healthy", variant="secondary", scale=1)
 
             with gr.Row():
                 btn_s1 = gr.Button("1. Normal (45%)", size="sm", scale=1)
@@ -174,13 +174,13 @@ def build_app():
             )
 
         # Main Navigation Tabs
-        with gr.Tabs():
+        with gr.Tabs(elem_classes="seed-sensei-tabs"):
             # 1. Overview Tab
-            with gr.TabItem("📊 Overview"):
+            with gr.TabItem("Overview"):
                 overview_display = gr.HTML()
 
             # 2. Farm Health Tab
-            with gr.TabItem("🗺️ Farm Health"):
+            with gr.TabItem("Farm Health"):
                 farm_grid_display = gr.HTML()
                 
                 gr.Markdown("#### Select an area to inspect details & AI interpretation:")
@@ -195,15 +195,15 @@ def build_app():
                 zone_detail_display = gr.HTML()
 
             # 3. AI Insights Tab
-            with gr.TabItem("🧠 AI Insights"):
+            with gr.TabItem("AI Insights"):
                 insights_display = gr.HTML()
 
             # 4. Recommendations Tab
-            with gr.TabItem("📋 Recommendations"):
+            with gr.TabItem("Recommendations"):
                 recommendations_display = gr.HTML()
 
             # 5. Alerts Tab
-            with gr.TabItem("🔔 Alerts"):
+            with gr.TabItem("Alerts"):
                 alerts_display = gr.HTML()
 
         # Footer Note

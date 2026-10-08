@@ -11,12 +11,43 @@ import html
 # Custom CSS for modern enterprise agricultural SaaS dashboard
 PRODUCT_CSS = """
 /* Seed Sensei Enterprise Theme */
-body, .gradio-container {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-    background-color: #f8fafc !important;
-    color: #1e293b !important;
+body, .gradio-container { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important; 
+    background-color: #f8fafc !important; 
+    color: #1e293b !important; 
+}
+/* Seed Sensei Navigation */
+.seed-sensei-tabs {
+    background: #ffffff !important;
 }
 
+.seed-sensei-tabs .tab-nav {
+    background: #ffffff !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+}
+
+.seed-sensei-tabs .tab-nav button,
+.seed-sensei-tabs button[role="tab"] {
+    color: #334155 !important;
+    background: #ffffff !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+}
+
+.seed-sensei-tabs .tab-nav button:hover,
+.seed-sensei-tabs button[role="tab"]:hover {
+    color: #047857 !important;
+    background: #f0fdf4 !important;
+}
+
+.seed-sensei-tabs .tab-nav button.selected,
+.seed-sensei-tabs button[role="tab"][aria-selected="true"] {
+    color: #047857 !important;
+    background: #ffffff !important;
+    opacity: 1 !important;
+    border-bottom: 2px solid #047857 !important;
+}
 .brand-header {
     background: linear-gradient(135deg, #064e3b 0%, #065f46 60%, #047857 100%);
     color: #ffffff;
